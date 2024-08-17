@@ -1,0 +1,75 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    box-shadow: 1px 2px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+.row-principal {
+    margin-top: 1em;
+    flex-direction: column;
+    width: 100%;
+}
+
+.col-search {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em;
+}
+
+.col-titulo {
+    display: flex;
+    justify-content: center;
+    color: aliceblue;
+}
+
+
+
+.d-flex {
+    display: flex;
+    justify-content: center;
+    margin: 1em;
+}
+
+input {
+    width: 70%;
+    box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+button {
+    margin-left: 1em;
+}
+
+
+/* col tareas */
+.col-tareas {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+mat-card {
+    display: flex;
+    border: 2px solid #037699; /* Cambia el color del borde */
+    border-radius: 8px; /* Redondea los bordes */
+    background-color: rgba(249, 249, 255, 0.8); /* Blanco con 80% de opacidad */
+    margin-bottom: 1em;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición para el efecto de zoom */
+    width: 90%;
+    margin-left: 3.5em;
+}
+
+mat-card:hover {
+    transform: scale(1.0); /* Efecto de zoom: Escala el mat-card a un 110% de su tamaño original */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Añade una sombra para resaltar el efecto */
+}
+
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+
+}
+

@@ -1,63 +1,75 @@
 
-<div class="container">
+<div class="container-fluid">
     
-    <div class="row-principal">
+  <div class="row-principal">
 
-        <div  class="col-titulo">
-            <h1>{{title}}</h1>
+      <div class="col-sesion">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown button
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
         </div>
+            
+      </div>
 
-        <div class="col-search">
-            <form class="d-flex" role="search">
-                <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example">
-                <button type="button" class="btn btn-primary">
-                    Buscar
-                  </button>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
-                    Crear
+      <div class="col-search">
+          <form class="d-flex" role="search">
+              <input class="form-control form-control-lg" type="text" aria-label=".form-control-lg example">
+              <button type="button" class="btn btn-primary">
+                  Buscar
                 </button>
-            </form>
-                <!-- modal o dialog -->
-                <div class="modal " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="exampleModalLongTitle">Nueva Tarea</h5>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">
+                  Crear
+              </button>
+          </form>
+              <!-- modal o dialog -->
+              <div class="modal " id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Nueva Tarea</h5>
+                      </div>
+                      <div class="modal-body">
+                        <div class="mb-1">
+                          <label for="exampleFormControlTextarea1" class="form-label"></label>
+                          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                         </div>
-                        <div class="modal-body">
-                          <p>Este es el body modal</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-toggle="modal">Close</button>
-                          <button type="button" class="btn btn-primary" data-bs-toggle="modal">Save changes</button>
-                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-toggle="modal">Cancelar</button>
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal">Guardar tarea</button>
                       </div>
                     </div>
                   </div>
-            
-        </div>
+                </div>
+      </div>
 
-        <div class="col-tareas">
-            <mat-card appearance="outlined" >
-                <mat-card-content class="card-content">
-                    <span class="tarea">esta es la primera tarea</span>
-                    <mat-checkbox></mat-checkbox>
-                </mat-card-content>
-            </mat-card>
+      <div class="col-tareas">
+          <mat-card appearance="outlined" >
+              <mat-card-content class="card-content">
+                  <span class="tarea">esta es la primera tarea</span>
+                  <mat-checkbox></mat-checkbox>
+              </mat-card-content>
+          </mat-card>
 
-            <mat-card appearance="outlined" >
-                <mat-card-content class="card-content">
-                    <span class="tarea">esta es la primera tarea</span>
-                    <mat-checkbox></mat-checkbox>
-                </mat-card-content>
-            </mat-card>
-
-
-        </div>
+          <mat-card appearance="outlined" >
+              <mat-card-content class="card-content">
+                  <span class="tarea">esta es la primera tarea</span>
+                  <mat-checkbox></mat-checkbox>
+              </mat-card-content>
+          </mat-card>
 
 
-    </div>
-    
+      </div>
+
+
+  </div>
+  
 </div>
 
 <router-outlet />

@@ -1,0 +1,32 @@
+/* col tareas */
+.col-tareas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+mat-card {
+    display: flex;
+    border: 2px solid #037699; /* Cambia el color del borde */
+    border-radius: 8px; /* Redondea los bordes */
+    background-color: rgba(249, 249, 255, 0.8); /* Blanco con 80% de opacidad */
+    margin-bottom: 1em;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transición para el efecto de zoom */
+    width: 50%;
+    height: 60px;
+    /* margin-left: 3.5em; */
+}
+
+mat-card:hover {
+    transform: scale(1.0); /* Efecto de zoom: Escala el mat-card a un 110% de su tamaño original */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Añade una sombra para resaltar el efecto */
+}
+
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}

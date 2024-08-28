@@ -15,4 +15,11 @@ import { TareaComponent } from "../../components/tarea/tarea.component";
 })
 export class HomeComponent {
 
+  
+
+
+  constructor() {}
+
+
+
 }

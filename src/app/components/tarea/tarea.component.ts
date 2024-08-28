@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -20,21 +20,31 @@ interface Tarea {
 
 
 
-export class TareaComponent {
+export class TareaComponent implements OnInit {
+  
+  @Input() dataEntrante: any;
 
-  listTarea: Tarea[] = [
-    {
-      descripcion:"Esta es la primer tarea del dia"
-    },
-    {
-      descripcion:"Esta es la segunda tarea del dia"
-    },
-    {
-      descripcion:"Esta es la tercer tarea del dia"
-    }
-  ]
+  listTarea: Tarea[] = [];
+
 
   constructor(){}
   
+  ngOnInit(): void {
+      
+    this.listTarea = [
+      {
+        descripcion: "Mi primer tarea del dia"
+      },
+      {
+        descripcion: "Mi segunda tarea del dia"
+      },
+      {
+        descripcion: "Mi cuarta tarea del dia"
+      }
+    ]
+
+  }
+
+
 
 }

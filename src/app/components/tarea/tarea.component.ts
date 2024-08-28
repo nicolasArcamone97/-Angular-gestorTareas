@@ -6,10 +6,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
 
 
-interface Tarea {
-  descripcion: string
-}
-
 @Component({
   selector: 'app-tarea',
   standalone: true,
@@ -20,30 +16,12 @@ interface Tarea {
 
 
 
-export class TareaComponent implements OnInit {
+export class TareaComponent  {
   
   @Input() dataEntrante: any;
 
-  listTarea: Tarea[] = [];
-
 
   constructor(){}
-  
-  ngOnInit(): void {
-      
-    this.listTarea = [
-      {
-        descripcion: "Mi primer tarea del dia"
-      },
-      {
-        descripcion: "Mi segunda tarea del dia"
-      },
-      {
-        descripcion: "Mi cuarta tarea del dia"
-      }
-    ]
-
-  }
 
 
 

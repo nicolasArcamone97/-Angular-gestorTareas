@@ -25,14 +25,13 @@
 }
 
 .card-big-shadow {
-    width: 320px;
-    height: 300px;
+    width: 300px;
+    height: 270px;
     position: relative;
 }
 
 .coloured-cards .card {
     margin-top: 30px;
-    height: 300px;
     position: relative;
 }
 
@@ -47,9 +46,9 @@
     color: #252422;
     margin-bottom: 20px;
     position: relative;
-    height: 300px;
+    height: 270px;
     z-index: 1;
-    margin-top: 1em;
+    margin-top: 2em;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 

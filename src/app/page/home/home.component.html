@@ -6,7 +6,7 @@
       <p style="font-size: 20px; color: gray;">28/08/2024</p>
     </div>
 
-    <div class="col col-agregar-tara">
+    <div class="col col-agregar-tarea">
       <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg"></i></a>
       <app-modal/>
     </div>
@@ -15,7 +15,7 @@
     <div class="col col-lista-tareas" *ngIf="listTarea.length != 0">
       <div class="row row-tareas">
         <!-- col 1 de 4 -->
-        <div class="col-md-4 col-xl-3 col-tareas" *ngFor="let tarea of listTarea">
+        <div class="col-md-4 col-xl-4 col-tareas" *ngFor="let tarea of listTarea">
           <app-tarea [dataEntrante]="tarea" (tareaEnviada)="recibirTarea($event)" />
         </div>
       </div>

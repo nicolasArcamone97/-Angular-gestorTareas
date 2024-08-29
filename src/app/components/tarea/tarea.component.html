@@ -1,13 +1,14 @@
-
-   <div class="card-big-shadow">
-            <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                <div class="content">
-                    <h4 class="title"><a href="#">{{dataEntrante.titulo}}</a></h4>
-                    <p class="description">{{dataEntrante.titulo}} </p>
+<div class="card-big-shadow">
+    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+        <div class="content" style="position: relative;">
+            <h4 class="title"><a href="#">{{dataEntrante.titulo}}</a></h4>
+            <p class="description">{{dataEntrante.titulo}}</p>
+            <div class="icon-container">
+                <a href="#" (click)="seleccionarTarea(dataEntrante)"><i class="bi bi-check2"></i></a>
             </div>
         </div>
     </div>
- 
+</div>
 
 
 

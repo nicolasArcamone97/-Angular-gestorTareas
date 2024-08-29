@@ -24,6 +24,7 @@
 .coloured-cards .card {
     margin-top: 30px;
     height: 300px;
+    position: relative;
     
 }
 
@@ -157,4 +158,17 @@ a:hover, a:focus {
 }
 .card[data-color="orange"] .category {
     color: #e95e37;
+}
+
+
+/* icon */
+.icon-container {
+    position: absolute;
+    bottom: 10px;  /* Ajusta según lo necesario */
+    left: 30px;    /* Ajusta según lo necesario */
+}
+
+.icon-container i {
+    font-size: 20px;
+    color: #252422;
 }

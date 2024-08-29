@@ -10,7 +10,7 @@
           <div class="row row-tareas">
             <!-- col 1 de 4 -->
             <div class="col-md-4 col-xl-3 col-lista-tareas" *ngFor="let tarea of listTarea">
-              <app-tarea [dataEntrante]="tarea"  />  
+              <app-tarea [dataEntrante]="tarea"  (tareaEnviada)="recibirTarea($event)"/>  
             </div>
           </div>
        </div>
@@ -19,7 +19,7 @@
       <div class="col col-tareas-completadas">
 
         <!-- accordion -->
-        <div class="accordion" id="accordionExample">
+        <div class="accordion" id="accordionExample" *ngIf="listCompletadas.length != 0">
           <div class="accordion-item">
             <h2 class="accordion-header">
               <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -29,12 +29,8 @@
            
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <ul class="list-group">
-                  <li class="list-group-item">An item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
-                  <li class="list-group-item">A fourth item</li>
-                  <li class="list-group-item">And a fifth one</li>
+                <ul class="list-group" *ngFor="let tarea of listCompletadas">
+                  <li class="list-group-item">{{tarea.descripcion}}</li>
                 </ul>
               </div>
             </div>

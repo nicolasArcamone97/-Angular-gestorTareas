@@ -2,11 +2,56 @@
     <div class="row row-principal">
         
        <div class="col col-titulo">
-          <p>Mi dia</p>
+          <h1>Mi dia</h1>
           <p style="font-size: 20px; color: gray;">28/08/2024</p>
        </div>
 
-       <div class="col col-lista-tareas">
+       <div class="col col-agregar-tara">
+          <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg"></i></a> 
+          <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva tarea</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="model-body-titulo">
+                          <p>Seleccionar color</p>
+                      </div>
+                      <!-- color-selector.component.html -->
+                      <div class="btn-group" role="group" aria-label="Color selector">
+                        <input type="radio" class="btn-check" name="color" id="colorBlue" autocomplete="off" value="blue" >
+                        <label class="btn btn-outline-primary" for="colorBlue" style="background-color: #b8d8d8; border-color: #b8d8d8;"></label>
+
+                        <input type="radio" class="btn-check" name="color" id="colorGreen" autocomplete="off" value="green" >
+                        <label class="btn btn-outline-primary" for="colorGreen" style="background-color: #d5e5a3; border-color: #d5e5a3;"></label>
+
+                        <input type="radio" class="btn-check" name="color" id="colorYellow" autocomplete="off" value="yellow" >
+                        <label class="btn btn-outline-primary" for="colorYellow" style="background-color: #ffe28c; border-color: #ffe28c;"></label>
+
+                        <input type="radio" class="btn-check" name="color" id="colorBrown" autocomplete="off" value="brown">
+                        <label class="btn btn-outline-primary" for="colorBrown" style="background-color: #d6c1ab; border-color: #d6c1ab;"></label>
+
+                        <input type="radio" class="btn-check" name="color" id="colorPurple" autocomplete="off" value="purple" >
+                        <label class="btn btn-outline-primary" for="colorPurple" style="background-color: #baa9ba; border-color: #baa9ba;"></label>
+
+                        <input type="radio" class="btn-check" name="color" id="colorOrange" autocomplete="off" value="orange">
+                        <label class="btn btn-outline-primary" for="colorOrange" style="background-color: #ff8f5e; border-color: #ff8f5e;"></label>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                  </div>
+                </div>
+              </div>
+            </div>  
+       </div>
+
+
+       <div class="col col-lista-tareas" *ngIf="listTarea.length != 0">
           <div class="row row-tareas">
             <!-- col 1 de 4 -->
             <div class="col-md-4 col-xl-3 col-lista-tareas" *ngFor="let tarea of listTarea">

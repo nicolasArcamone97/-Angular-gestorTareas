@@ -16,12 +16,25 @@
 }
 
 
-.col-titulo p {
-    margin-top: 1em;
-    font-size: 30px;
-    font-weight: 500;
-    color: rgb(10, 10, 10);
+.col-titulo {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0;
+    margin-left: 1em;
 }
+
+h1 {
+    height: 33px;
+    font-size: 30px;
+}
+
+.col-titulo p {
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+
 
 /* tareas */
 .row .row-tareas {
@@ -34,7 +47,6 @@
     display: flex;
     justify-content: center;
     margin: 1em;
-    background-color: red;
 }
 
 /* accordion */
@@ -50,3 +62,19 @@
     box-sizing: border-box;
 }
 
+/* agregar tarae */
+
+.col-agregar-tara {
+    display: flex;
+    justify-content: start;
+    margin-top: 1em;
+}
+
+.col-agregar-tarea a,i {
+    font-size: 30px;
+    color: rgb(90, 89, 89);
+}
+
+.col-agregar-tara i:hover {
+    color: green;
+}

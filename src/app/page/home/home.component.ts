@@ -23,6 +23,8 @@ export class HomeComponent implements OnInit {
 
   tareaSelected?: Tarea;
 
+  colorRecibido?: String;
+
   constructor() {}
 
   ngOnInit(): void {
@@ -64,6 +66,9 @@ export class HomeComponent implements OnInit {
     this.listCompletadas.push(tarea)    
   }
 
+  recibirColor(color:String){
+    this.colorRecibido = color
+  }
 
 
 }

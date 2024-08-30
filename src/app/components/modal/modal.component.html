@@ -1,60 +1,56 @@
- <!-- Modal -->
- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <!-- modal header -->
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva tarea</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <!-- modal body -->
-        <div class="modal-body">
-
-            <div class="modal-body-descripcion">
-              <div class="mb-3">
-                <label for="exampleFormControlInput1" class="form-label">Titulo</label>
-                <input class="form-control" id="exampleFormControlInput1" >
-              </div>
-              <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              </div>
-            </div>
-
-            <div class="model-body-titulo">
-              <p>Seleccionar color</p>
-            </div>
-            <!-- color-selector.component.html -->
-            <div class="btn-group" role="group" aria-label="Color selector">
-              <input type="radio" class="btn-check" name="color" id="colorBlue" autocomplete="off" value="blue" (click)="seleccionarColor('blue')">
-              <label class="btn btn-outline-primary" for="colorBlue" style="background-color: #b8d8d8; border-color: #b8d8d8;"></label>
-
-              <input type="radio" class="btn-check" name="color" id="colorGreen" autocomplete="off" value="green" (click)="seleccionarColor('green')">
-              <label class="btn btn-outline-primary" for="colorGreen" style="background-color: #d5e5a3; border-color: #d5e5a3;"></label>
-
-              <input type="radio" class="btn-check" name="color" id="colorYellow" autocomplete="off" value="yellow" (click)="seleccionarColor('yellow')">
-              <label class="btn btn-outline-primary" for="colorYellow" style="background-color: #ffe28c; border-color: #ffe28c;"></label>
-
-              <input type="radio" class="btn-check" name="color" id="colorBrown" autocomplete="off" value="brown" (click)="seleccionarColor('brown')">
-              <label class="btn btn-outline-primary" for="colorBrown" style="background-color: #d6c1ab; border-color: #d6c1ab;"></label>
-
-              <input type="radio" class="btn-check" name="color" id="colorPurple" autocomplete="off" value="purple" (click)="seleccionarColor('purple')">
-              <label class="btn btn-outline-primary" for="colorPurple" style="background-color: #baa9ba; border-color: #baa9ba;"></label>
-
-              <input type="radio" class="btn-check" name="color" id="colorOrange" autocomplete="off" value="orange" (click)="seleccionarColor('orange')">
-              <label class="btn btn-outline-primary" for="colorOrange" style="background-color: #ff8f5e; border-color: #ff8f5e;"></label>
-            </div>
-        
-        </div>
-
-        <!-- modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Crear tarea</button>
-        </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- modal header -->
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva tarea</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-    </div>
+      <!-- modal body -->
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Titulo</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" name="titulo" required>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Descripcion</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion" rows="3" required></textarea>
+          </div>
 
-  </div>  
+          <div class="mb-3">
+            <p>Seleccionar color</p>
+            <div class="btn-group" role="group" aria-label="Color selector">
+              <input type="radio" class="btn-check" name="color" id="colorBlue" autocomplete="off" value="blue" (click)="seleccionarColor('blue')">
+              <label class="btn btn-outline-primary color-option" for="colorBlue" style="background-color: #b8d8d8; border-color: #b8d8d8;"></label>
+          
+              <input type="radio" class="btn-check" name="color" id="colorGreen" autocomplete="off" value="green" (click)="seleccionarColor('green')">
+              <label class="btn btn-outline-primary color-option" for="colorGreen" style="background-color: #d5e5a3; border-color: #d5e5a3;"></label>
+          
+              <input type="radio" class="btn-check" name="color" id="colorYellow" autocomplete="off" value="yellow" (click)="seleccionarColor('yellow')">
+              <label class="btn btn-outline-primary color-option" for="colorYellow" style="background-color: #ffe28c; border-color: #ffe28c;"></label>
+          
+              <input type="radio" class="btn-check" name="color" id="colorBrown" autocomplete="off" value="brown" (click)="seleccionarColor('brown')">
+              <label class="btn btn-outline-primary color-option" for="colorBrown" style="background-color: #d6c1ab; border-color: #d6c1ab;"></label>
+          
+              <input type="radio" class="btn-check" name="color" id="colorPurple" autocomplete="off" value="purple" (click)="seleccionarColor('purple')">
+              <label class="btn btn-outline-primary color-option" for="colorPurple" style="background-color: #baa9ba; border-color: #baa9ba;"></label>
+          
+              <input type="radio" class="btn-check" name="color" id="colorOrange" autocomplete="off" value="orange" (click)="seleccionarColor('orange')">
+              <label class="btn btn-outline-primary color-option" for="colorOrange" style="background-color: #ff8f5e; border-color: #ff8f5e;"></label>
+            </div>
+          </div>
+          
+
+          <!-- modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Crear tarea</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

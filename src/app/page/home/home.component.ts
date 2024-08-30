@@ -28,7 +28,6 @@ export class HomeComponent implements OnInit {
 
   tareaSelected?: Tarea;
 
-  colorRecibido?: String;
 
   constructor(private _tareaService:TareaService) {}
 
@@ -41,16 +40,16 @@ export class HomeComponent implements OnInit {
     this._tareaService.obtenerTareas().subscribe((data:Tarea[]) => {
       this.listTarea = data
     })
+   
   }
 
 
 
   recibirTarea(tarea:Tarea){
-    this.listCompletadas.push(tarea)    
-  }
-
-  recibirColor(color:String){
-    this.colorRecibido = color
+    this._tareaService.crearTarea(tarea).subscribe(() => {console.log("Tarea agregada")
+      this.obtenerTareas()
+    })  
+    
   }
 
 

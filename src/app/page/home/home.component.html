@@ -2,13 +2,13 @@
   <div class="row row-principal">
 
     <div class="col col-titulo">
-      <h1>Mi dia</h1>
-      <p style="font-size: 20px; color: gray;">28/08/2024</p>
+      <h1>Mis tareas</h1>
+      <p style="font-size: 20px; color: gray;">30/08/2024</p>
     </div>
 
     <div class="col col-agregar-tarea">
       <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg"></i></a>
-      <app-modal (colorEnviado)="recibirColor($event)"/>
+      <app-modal  (tareaEnviada)="recibirTarea($event)" />
     </div>
 
 

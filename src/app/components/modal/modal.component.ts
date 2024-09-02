@@ -3,12 +3,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterOutlet } from '@angular/router';
 import { Tarea } from '../../models/tarea.model';
 import { ColorEnum } from '../../enums/color.enum';
-
+import { CommonModule } from '@angular/common'; // Importa CommonModule
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [RouterOutlet,ReactiveFormsModule],
+  imports: [RouterOutlet,ReactiveFormsModule,CommonModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
@@ -18,7 +18,7 @@ export class ModalComponent {
   @Output() tareaEnviada = new EventEmitter<Tarea>();
 
   colorEnum = ColorEnum;
-  colorSeleccionado: ColorEnum = ColorEnum.blue;
+  colorSeleccionado?: ColorEnum;;
   tarea?:Tarea;
 
   myForm:FormGroup;
@@ -28,26 +28,24 @@ export class ModalComponent {
     this.myForm = this.form.group({
       titulo: ['', Validators.required],
       descripcion: ['',Validators.required],
-      color:[]
+      color:['']
     })
   }
 
   seleccionarColor(color: ColorEnum) {
     this.colorSeleccionado = color;
-    console.log(`Color seleccionado: ${this.colorSeleccionado}`); // Imprimirá el color seleccionado
   }
 
 
   enviar() {
-    // Si colorSeleccionado es undefined, asigna un valor predeterminado de ColorEnum
     if (!this.colorSeleccionado) {
-      this.colorSeleccionado = ColorEnum.blue; // Valor predeterminado o maneja el error de forma adecuada
+      this.colorSeleccionado = ColorEnum.blue;
     }
   
     this.tarea = {
       titulo: this.myForm.value.titulo,
       descripcion: this.myForm.value.descripcion,
-      color: this.colorSeleccionado as ColorEnum, // Forzar el tipo si es seguro hacerlo
+      color: this.colorSeleccionado 
     };
   
     this.tareaEnviada.emit(this.tarea);

@@ -22,7 +22,7 @@
 .card .description {
     font-size: 16px;
     color: #66615b;
-    height: auto !important;  /* Ajustar automáticamente al contenido */
+    height: auto !important; 
 }
 
 .card-big-shadow {

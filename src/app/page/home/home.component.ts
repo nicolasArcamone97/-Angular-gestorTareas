@@ -8,14 +8,14 @@ import { Tarea } from '../../models/tarea.model';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from "../../components/modal/modal.component";
 import { TareaService } from '../../services/tarea.service';
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, MatCardModule, MatCheckboxModule, MatMenuModule, TareaComponent, CommonModule, ModalComponent],
+  imports: [RouterOutlet, MatCardModule, MatCheckboxModule, MatMenuModule, TareaComponent, CommonModule, ModalComponent,DragDropModule],
   providers:[TareaService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
     })  
     
   }
+
 
 
 }

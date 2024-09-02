@@ -1,6 +1,5 @@
 <div class="container-fluid">
-  <div class="row row-principal">
-
+  <div class="row row-principal example-boundary"> <!-- Mantenemos example-boundary aquí -->
     <div class="col col-titulo">
       <h1>Mis tareas</h1>
       <p style="font-size: 20px; color: gray;">30/08/2024</p>
@@ -8,32 +7,28 @@
 
     <div class="col col-agregar-tarea">
       <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg"></i></a>
-      <app-modal  (tareaEnviada)="recibirTarea($event)" />
+      <app-modal (tareaEnviada)="recibirTarea($event)"></app-modal>
     </div>
-
 
     <div class="col col-lista-tareas" *ngIf="listTarea.length != 0">
       <div class="row row-tareas">
+        <!-- cdkDropList para hacer la lista de tareas droppable -->
         <!-- col 1 de 4 -->
-        <div class="col-md-4 col-xl-4 col-tareas" *ngFor="let tarea of listTarea">
-          <app-tarea [dataEntrante]="tarea" (tareaEnviada)="recibirTarea($event)" />
+        <div class="col-md-4 col-xl-4 col-tareas example-box" *ngFor="let tarea of listTarea" cdkDragBoundary=".example-boundary" cdkDrag>
+          <app-tarea [dataEntrante]="tarea" (tareaEnviada)="recibirTarea($event)"></app-tarea>
         </div>
       </div>
     </div>
 
-    <!-- col tareas completadas -->
     <div class="col col-tareas-completadas">
-
       <!-- accordion -->
       <div class="accordion" id="accordionExample" *ngIf="listCompletadas.length != 0">
         <div class="accordion-item">
           <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-              aria-expanded="true" aria-controls="collapseOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
               Tareas completadas
             </button>
           </h2>
-
           <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
             <div class="accordion-body">
               <ul class="list-group" *ngFor="let tarea of listCompletadas">
@@ -47,7 +42,6 @@
     </div>
     <!-- finalzia col tareas finalziadas -->
   </div>
-
 </div>
 
 

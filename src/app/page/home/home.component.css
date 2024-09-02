@@ -1,10 +1,12 @@
-.container-fluid{
+.container-fluid {
     display: flex;
     flex-direction: column;
-    min-width: 174.6vh;
     min-height: 100vh;
-    background-color: #ffffff;;
+    width: 100%; 
+    overflow: hidden; 
+    background-color: #ffffff;
     box-shadow: 1px 2px 3px 5px rgba(0, 0, 0, 0.5);
+    position: relative;  
 }
 
 .row-principal {
@@ -12,6 +14,7 @@
     justify-content: center;
     flex-direction: column;
     width: 100%;
+    position: relative; 
 }
 
 
@@ -37,16 +40,15 @@ h1 {
 
 /* tareas */
 .row .row-tareas {
-    display: flex;
-    justify-content: center;
     width: 100%;
-    margin-bottom: 3em;
+    max-width: 100%;
+    overflow: hidden; 
 }
 
 .col-lista-tareas {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan en una nueva línea si es necesario */
+    flex-wrap: wrap; 
     margin-top: 1em;
     max-width: 100%;
 }
@@ -55,19 +57,20 @@ h1 {
     display: flex;
     justify-content: center;
     max-width: 50%;
-
+    position: relative;
+    padding: 3em;
 }
 
 /* accordion */
 
 .col-tareas-completadas {
-    width: 100%; /* Mantiene el contenedor de tareas completadas al 100% */
-    max-width: 100%; /* Evita que se desborde fuera de los límites esperados */
+    width: 100%; 
+    max-width: 100%; 
     box-sizing: border-box;
 }
 .accordion {
-    width: 70%; /* Asegura que el acordeón use todo el ancho del contenedor padre */
-    max-width: 80%; /* Evita que se expanda más del ancho disponible */
+    width: 70%; 
+    max-width: 80%; 
     box-sizing: border-box;
 }
 
@@ -87,3 +90,7 @@ h1 {
 .col-agregar-tara i:hover {
     color: green;
 }
+
+
+
+

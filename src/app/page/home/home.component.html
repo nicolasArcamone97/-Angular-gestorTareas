@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row row-principal example-boundary"> <!-- Mantenemos example-boundary aquí -->
+  <div class="row row-principal "> <!-- Mantenemos example-boundary aquí -->
     <div class="col col-titulo">
       <h1>Mis tareas</h1>
       <p style="font-size: 20px; color: gray;">30/08/2024</p>
@@ -10,7 +10,7 @@
       <app-modal (tareaEnviada)="recibirTarea($event)"></app-modal>
     </div>
 
-    <div class="col col-lista-tareas" *ngIf="listTarea.length != 0">
+    <div class="col col-lista-tareas example-boundary" *ngIf="listTarea.length != 0">
       <div class="row row-tareas">
         <!-- cdkDropList para hacer la lista de tareas droppable -->
         <!-- col 1 de 4 -->

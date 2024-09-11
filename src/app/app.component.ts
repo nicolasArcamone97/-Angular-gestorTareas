@@ -18,5 +18,9 @@ export class AppComponent {
   isRegisterRoute(): boolean {
     return this.router.url === '/register';
   }
+
+  isLoginRoute(): boolean {
+    return this.router.url === '/login';
+  }
 }
 

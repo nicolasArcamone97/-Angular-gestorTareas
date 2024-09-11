@@ -1,7 +1,7 @@
 import { Component, Output,EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Tarea } from '../../models/tarea.model';
+import { Tarea } from '../../interfaces/tarea';
 import { ColorEnum } from '../../enums/color.enum';
 import { CommonModule } from '@angular/common'; // Importa CommonModule
 

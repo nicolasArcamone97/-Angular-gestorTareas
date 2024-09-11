@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { TareaComponent } from "../../components/tarea/tarea.component";
-import { Tarea } from '../../models/tarea.model';
+import { Tarea } from '../../interfaces/tarea';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from "../../components/modal/modal.component";
 import { TareaService } from '../../services/tarea.service';

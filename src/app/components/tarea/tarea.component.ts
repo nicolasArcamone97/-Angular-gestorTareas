@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { CommonModule } from '@angular/common';
-import { Tarea } from '../../interfaces/tarea';
+import { Tarea } from '../../models/tarea';
 
 
 @Component({

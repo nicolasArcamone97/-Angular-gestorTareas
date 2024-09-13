@@ -4,11 +4,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { TareaComponent } from "../../components/tarea/tarea.component";
-import { Tarea } from '../../interfaces/tarea';
+import { Tarea } from '../../models/tarea';
 import { CommonModule } from '@angular/common';
 import { ModalComponent } from "../../components/modal/modal.component";
 import { TareaService } from '../../services/tarea.service';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { TokenService } from '../../services/token.service';
 
 
 
@@ -28,11 +29,15 @@ export class HomeComponent implements OnInit {
 
   tareaSelected?: Tarea;
 
+  emailUsuario: string | null = null; // Permite null como valor inicial
 
-  constructor(private _tareaService:TareaService) {}
+  constructor(private _tareaService:TareaService,
+              private tokenService:TokenService
+  ) {}
 
   ngOnInit(): void {
     this.obtenerTareas()
+    this.emailUsuario = this.tokenService.getEmailUser()
   }
 
 

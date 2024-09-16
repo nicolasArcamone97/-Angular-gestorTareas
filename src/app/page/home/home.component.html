@@ -1,136 +1,43 @@
+
+
 <div class="container-fluid">
-  <div class="row row-principal "> <!-- Mantenemos example-boundary aquí -->
-    <div class="col col-titulo">
-      <h1>Mis tareas</h1>
-      <p style="font-size: 20px; color: gray;">30/08/2024</p>
+  <div class="row row-principal "> 
+
+    <!-- col sidebar -->
+    <div class="col-md-3 col-sidebar">
+      <app-sidebar></app-sidebar>
     </div>
 
-    <div class="col col-agregar-tarea">
-      <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg"></i></a>
-      <app-modal (tareaEnviada)="recibirTarea($event)"></app-modal>
-    </div>
+    <!-- col tareas -->
+      <div class="col col-tareas">
 
-    <div class="col col-lista-tareas example-boundary" *ngIf="listTarea.length != 0">
-      <div class="row row-tareas">
-        <!-- cdkDropList para hacer la lista de tareas droppable -->
-        <!-- col 1 de 4 -->
-        <div class="col-md-4 col-xl-4 col-tareas example-box" *ngFor="let tarea of listTarea" cdkDragBoundary=".example-boundary" cdkDrag>
-          <app-tarea [dataEntrante]="tarea" (tareaEnviada)="recibirTarea($event)"></app-tarea>
-        </div>
-      </div>
-    </div>
+        <!-- row de tareas  -->
+        <div class="row row-secund">
 
-    <div class="col col-tareas-completadas">
-      <!-- accordion -->
-      <div class="accordion" id="accordionExample" *ngIf="listCompletadas.length != 0">
-        <div class="accordion-item">
-          <h2 class="accordion-header">
-            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Tareas completadas
-            </button>
-          </h2>
-          <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-              <ul class="list-group" *ngFor="let tarea of listCompletadas">
-                <li class="list-group-item">{{tarea.descripcion}}</li>
-              </ul>
+          <!-- col titulo -->
+            <div class="col col-titulo">
+                  <h1>Mis tareas </h1>
             </div>
-          </div>
-        </div>
-      </div>
-      <!-- finaliza accordeon -->
-    </div>
-    <!-- finalzia col tareas finalziadas -->
-  </div>
-</div>
 
+            <!-- col modal -->
+            <div class="col col-agregar-tarea">
+                  <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg"></i></a>
+                  <app-modal (tareaEnviada)="recibirTarea($event)"></app-modal>
+            </div>
 
-
-<!-- tareas de colores  -->
-<!-- col 2 de 4 -->
-<!-- <div class="col-md-4 col-xl-3 col-lista-tareas">
-              
-                <div class="card-big-shadow">
-                  <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
-                      <div class="content">
-                          <h6 class="category">Best cards</h6>
-                          <h4 class="title"><a href="#">Green Card</a></h4>
-                          <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
-                      </div>
-                  </div> 
-              </div>
-            
-                </div> -->
-<!-- col 3 de 4 -->
-<!-- <div class="col-md-4 col-xl-3 col-lista-tareas">
-              
-                <div class="card-big-shadow">
-                  <div class="card card-just-text" data-background="color" data-color="yellow" data-radius="none">
-                      <div class="content">
-                          <h6 class="category">Best cards</h6>
-                          <h4 class="title"><a href="#">Yellow Card</a></h4>
-                          <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
-                      </div>
-                  </div> 
-              </div>
-            
-                </div> -->
-
-<!-- col 4 de 4 -->
-<!-- <div class="col-md-4 col-xl-3 col-lista-tareas">
-              
-                <div class="card-big-shadow">
-                    <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                        <div class="content">
-                            <h6 class="category">Best cards</h6>
-                            <h4 class="title"><a href="#">Blue Card</a></h4>
-                            <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
-                        </div>
-                    </div>
-                 </div>
-            
-              </div> -->
-
-<!-- <div class="col-md-4 col-xl-3 col-lista-tareas">
-              
-                <div class="card-big-shadow">
-                  <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
-                      <div class="content">
-                          <h6 class="category">Best cards</h6>
-                          <h4 class="title"><a href="#">Brown Card</a></h4>
-                          <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
-                      </div>
-                  </div> 
-               </div>
-            
-              </div> -->
-
-<!-- col -->
-<!-- <div class="col-md-4 col-xl-3 col-lista-tareas">
-                <div class="card-big-shadow">
-                  <div class="card card-just-text" data-background="color" data-color="orange" data-radius="none">
-                      <div class="content">
-                          <h6 class="category">Best cards</h6>
-                          <h4 class="title"><a href="#">Orange Card</a></h4>
-                          <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
-                      </div>
-                  </div> 
-              </div>
-              
-              </div> -->
-
-<!-- fin col -->
-
-<!-- col  -->
-<!-- <div class="col-md-4 col-xl-3 col-lista-tareas">
-                  <div class="card-big-shadow">
-                    <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
-                        <div class="content">
-                            <h6 class="category">Best cards</h6>
-                            <h4 class="title"><a href="#">Purple Card</a></h4>
-                            <p class="description">What all of these have in common is that they're pulling information out of the app or the service and making it relevant to the moment. </p>
-                        </div>
-                    </div> 
+            <!-- col tareas -->
+            <div class="col col-lista-tareas example-boundary" *ngIf="listTarea.length != 0"> <!-- Mantenemos example-boundary aquí -->
+              <div class="row row-tareas">
+                <div class="col-xl-4 col-tarea example-box" *ngFor="let tarea of listTarea" cdkDragBoundary=".example-boundary" cdkDrag>
+                  <app-tarea [dataEntrante]="tarea" (tareaEnviada)="recibirTarea($event)"></app-tarea>
                 </div>
-              </div> -->
-<!-- fin col -->
+              </div>
+            </div>
+
+            <!-- termina row -->
+        </div>
+      
+        <!-- termina col-tareas -->
+    </div>
+</div>
+  

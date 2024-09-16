@@ -16,6 +16,7 @@ import { TokenService } from '../../../services/token.service';
 })
 export class LoginComponent {
 
+  // validadion de mail con expresion regular
   emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
   myForm:FormGroup;

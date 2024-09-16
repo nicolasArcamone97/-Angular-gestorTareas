@@ -10,13 +10,14 @@ import { ModalComponent } from "../../components/modal/modal.component";
 import { TareaService } from '../../services/tarea.service';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { TokenService } from '../../services/token.service';
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, MatCardModule, MatCheckboxModule, MatMenuModule, TareaComponent, CommonModule, ModalComponent,DragDropModule],
+  imports: [RouterOutlet, MatCardModule, MatCheckboxModule, MatMenuModule, TareaComponent, CommonModule, ModalComponent,DragDropModule,SidebarComponent],
   providers:[TareaService],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'

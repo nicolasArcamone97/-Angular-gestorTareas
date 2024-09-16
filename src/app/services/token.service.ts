@@ -19,6 +19,7 @@ export class TokenService {
     localStorage.setItem('token',token)
   }
 
+  // obtener token del localStorage
   getToken():string | null {
     return localStorage.getItem('token')
   }

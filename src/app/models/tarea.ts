@@ -4,7 +4,7 @@ export class Tarea {
     titulo: string
     descripcion: string;
     color: ColorEnum
-
+    
 
     constructor(titulo:string,descripcion:string,color:ColorEnum){
         this.titulo = titulo,

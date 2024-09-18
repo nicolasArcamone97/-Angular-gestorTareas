@@ -6,6 +6,8 @@ import { AuthService } from '../../../services/auth.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TokenService } from '../../../services/token.service';
 
+
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -26,11 +28,12 @@ export class LoginComponent {
   constructor(private authService:AuthService,
               private formBuilder:FormBuilder,
               private tokenService:TokenService,
-              private router:Router
+              private router:Router,
+             
   ){
     this.myForm = this.formBuilder.group({
        email: ['', [Validators.required, Validators.pattern(this.emailValidation)]],
-      password: ['',Validators.required],
+      password: ['',[Validators.required, Validators.minLength(6)]],
     })
   }
 
@@ -38,7 +41,7 @@ export class LoginComponent {
   onLogin(): void {
     if (this.myForm.valid) {
       const { email, password } = this.myForm.value; // Obtener los valores del formulario
-      this.usuario = new LoginDTO(email, password);
+      this.usuario = new LoginDTO(email, password); 
       
       this.authService.login(this.usuario).subscribe(
         (response) => {

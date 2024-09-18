@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import {jwtDecode} from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ export class TokenService {
 
   constructor() { }
 
+
+  // verificamos si hay un token guardado en el localSotage
   isLogged():boolean {
     if(this.getToken()){
       return true;
@@ -15,52 +17,49 @@ export class TokenService {
     return false
   }
 
+
+  // Este método almacena un token en el localStorage bajo la clave 'token'
   setToken(token:string):void {
     localStorage.setItem('token',token)
   }
 
-  // obtener token del localStorage
+  //Este método recupera el token almacenado en el localStorage. Si no existe un token, devuelve null
   getToken():string | null {
     return localStorage.getItem('token')
   }
 
-
-  getEmailUser(): string | null {
-    // Verifica si el usuario está autenticado
-    if (!this.isLogged) {
+   // Método genérico para obtener el payload decodificado del token
+   getPayload(): any | null {
+    const token = this.getToken();
+    if (!token) {
       return null;
     }
-  
+
     try {
-      // Obtén el token
-      const token = this.getToken();
-      
-      // Verifica que el token exista y tenga el formato adecuado
-      if (!token || !token.includes('.')) {
-        return null;
-      }
-  
-      // Divide el token en partes
-      const payload = token.split('.')[1];
-  
-      // Decodifica el payload del token
-      const values = atob(payload);
-  
-      // Parsea el payload decodificado
-      const valueJson = JSON.parse(values);
-  
-      // Verifica que el payload contenga un email
-      if (valueJson && valueJson.email) {
-        return valueJson.email;
-      } else {
-        return null;
-      }
+      // Decodifica el token completo y retorna el payload
+      return jwtDecode(token);
     } catch (error) {
-      // Maneja cualquier error que pueda ocurrir durante el procesamiento del token
-      console.error('Error al extraer el correo electrónico del token:', error);
+      console.error('Error al decodificar el token:', error);
       return null;
     }
   }
 
+   // Obtener el email del usuario desde el token decodificado
+   getEmailUser(): string | null {
+    if (!this.isLogged()) {
+      return null;
+    }
 
+    // Usa el método getPayload para obtener el payload del token
+    const payload = this.getPayload();
+    if (payload && payload.email) {
+      return payload.email;
+    }
+
+    return null;
+  }
 }
+  
+
+
+

@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoginDTO } from '../models/login.dto';
 import { RegisterDTO } from '../models/register.dto';
+import { enviroment } from '../enviroments/enviroment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  authURL:string = 'http://localhost:3000/auth/'
+  authURL = enviroment.authURL
 
   constructor(private httpClient: HttpClient) { }
 

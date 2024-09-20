@@ -3,6 +3,7 @@ import { Tarea } from '../../app/models/tarea';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from './token.service';
+import { Usuario } from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ import { TokenService } from './token.service';
 export class TareaService {
 
   private baseUrl = 'http://localhost:3000/tarea'
- 
+  private userUrl = 'http://localhost:3000/user'
+
   constructor(private http:HttpClient,
               private tokenService:TokenService
   ) { }
@@ -32,5 +34,29 @@ export class TareaService {
   }
 
 
+  public nuevaTarea(tarea:Tarea){
+    return this.http.post(`${this.baseUrl}/tarea-usuario/${this.tokenService.getUserId()}`,tarea, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.tokenService.getToken()}`
+      })
+    })
+  }
+
+
+  public obtenerTareasUsuario(): Observable<Tarea[]> {
+    return this.http.get<Tarea[]>(`${this.userUrl}/tareas/${this.tokenService.getUserId()}`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.tokenService.getToken()}`
+      })
+    });
+  }
+
+  public obtenerUsuario(): Observable<Usuario> {
+    return this.http.get<Usuario>(`${this.userUrl}/${this.tokenService.getUserId()}`, {
+      headers: new HttpHeaders({
+        'Authorization': `Bearer ${this.tokenService.getToken()}`
+      })
+    });
+  }
 
 }

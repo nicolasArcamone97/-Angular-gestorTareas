@@ -11,6 +11,7 @@ import { TareaService } from '../../services/tarea.service';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { TokenService } from '../../services/token.service';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
+import { Usuario } from '../../models/usuario';
 
 
 
@@ -25,39 +26,32 @@ import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 export class HomeComponent implements OnInit {
 
   listTarea: Tarea[] = [];
-  
-  listCompletadas: Tarea[] = []
 
   tareaSelected?: Tarea;
 
-  emailUsuario: string | null = null; // Permite null como valor inicial
+  usuarioSesion?: Usuario;
 
   constructor(private _tareaService:TareaService,
               private tokenService:TokenService
   ) {}
 
   ngOnInit(): void {
-    this.obtenerTareas()
-    this.emailUsuario = this.tokenService.getEmailUser()
+    this.obtenerTareasUsuario()
   }
 
 
-  obtenerTareas(){
-    this._tareaService.obtenerTareas().subscribe((data:Tarea[]) => {
+  obtenerTareasUsuario(){
+    this._tareaService.obtenerTareasUsuario().subscribe((data) => {
       this.listTarea = data
     })
-   
   }
-
-
 
   recibirTarea(tarea:Tarea){
-    this._tareaService.crearTarea(tarea).subscribe(() => {console.log("Tarea agregada")
-      this.obtenerTareas()
-    })  
-    
+    this._tareaService.nuevaTarea(tarea).subscribe((data) => {
+      this.obtenerTareasUsuario()
+      console.log(data)
+    })
   }
 
-
-
+  
 }

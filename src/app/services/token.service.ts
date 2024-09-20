@@ -34,7 +34,6 @@ export class TokenService {
     if (!token) {
       return null;
     }
-
     try {
       // Decodifica el token completo y retorna el payload
       return jwtDecode(token);
@@ -58,6 +57,29 @@ export class TokenService {
 
     return null;
   }
+
+  getUserId(): string | null {
+    if (!this.isLogged()) {
+      return null;
+    }
+  
+    const payload = this.getPayload();
+    if (payload && payload.id) {
+      return payload.id
+    }
+  
+    return null;
+  }
+
+
+  logOut(): void {
+    localStorage.clear()
+  }
+  
+
+
+
+
 }
   
 

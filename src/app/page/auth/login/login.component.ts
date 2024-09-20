@@ -37,7 +37,9 @@ export class LoginComponent {
     })
   }
 
-
+  ngOninit(){
+    
+  }
   onLogin(): void {
     if (this.myForm.valid) {
       const { email, password } = this.myForm.value; // Obtener los valores del formulario

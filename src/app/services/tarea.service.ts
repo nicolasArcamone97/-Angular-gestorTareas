@@ -18,11 +18,7 @@ export class TareaService {
   ) { }
 
   public obtenerTareas(): Observable<Tarea[]>{
-    return this.http.get<Tarea[]>(this.baseUrl,{
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.tokenService.getToken()}`
-      })
-    })
+    return this.http.get<Tarea[]>(this.baseUrl)
   }
 
   public obtenerTarea(idTarea:number): Observable<Tarea>{
@@ -35,28 +31,16 @@ export class TareaService {
 
 
   public nuevaTarea(tarea:Tarea){
-    return this.http.post(`${this.baseUrl}/tarea-usuario/${this.tokenService.getUserId()}`,tarea, {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.tokenService.getToken()}`
-      })
-    })
+    return this.http.post(`${this.baseUrl}/tarea-usuario/${this.tokenService.getUserId()}`,tarea)
   }
 
 
   public obtenerTareasUsuario(): Observable<Tarea[]> {
-    return this.http.get<Tarea[]>(`${this.userUrl}/tareas/${this.tokenService.getUserId()}`, {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.tokenService.getToken()}`
-      })
-    });
+    return this.http.get<Tarea[]>(`${this.userUrl}/tareas/${this.tokenService.getUserId()}`)
   }
 
   public obtenerUsuario(): Observable<Usuario> {
-    return this.http.get<Usuario>(`${this.userUrl}/${this.tokenService.getUserId()}`, {
-      headers: new HttpHeaders({
-        'Authorization': `Bearer ${this.tokenService.getToken()}`
-      })
-    });
+    return this.http.get<Usuario>(`${this.userUrl}/${this.tokenService.getUserId()}`)
   }
 
 }

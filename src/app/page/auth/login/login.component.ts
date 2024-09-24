@@ -5,6 +5,7 @@ import { LoginDTO } from '../../../models/login.dto';
 import { AuthService } from '../../../services/auth.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TokenService } from '../../../services/token.service';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -12,7 +13,7 @@ import { TokenService } from '../../../services/token.service';
   selector: 'app-login',
   standalone: true,
   imports: [RouterOutlet,CommonModule,RouterLink,ReactiveFormsModule],
-  providers:[AuthService,TokenService],
+  providers:[AuthService,TokenService,HttpClient],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -44,7 +45,6 @@ export class LoginComponent {
     if (this.myForm.valid) {
       const { email, password } = this.myForm.value; // Obtener los valores del formulario
       this.usuario = new LoginDTO(email, password); 
-      
       this.authService.login(this.usuario).subscribe(
         (response) => {
           console.log('Login exitoso:', response);
@@ -59,7 +59,8 @@ export class LoginComponent {
     } else {
       console.error('Formulario inválido');
     }
-  }
+  }     
+ 
 
 
 

@@ -4,9 +4,10 @@ import { RegisterComponent } from './page/auth/register/register.component';
 import { Component } from '@angular/core';
 import { LoginComponent } from './page/auth/login/login.component';
 import { LoginGuard } from './guards/login.guard';
+import { authGuardGuard } from './guards/auth-guard.guard';
 
 export const routes: Routes = [
-    {path: 'home', component: HomeComponent},
+    {path: 'home', component: HomeComponent, canActivate:[authGuardGuard]},
     {path:'register', component: RegisterComponent, canActivate:[LoginGuard]},
     {path:'login', component: LoginComponent,pathMatch: 'full', canActivate:[LoginGuard]},
     {path: '', redirectTo: 'login', pathMatch: 'full'},

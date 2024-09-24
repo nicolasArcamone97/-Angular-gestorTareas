@@ -12,6 +12,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import { TokenService } from '../../services/token.service';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { Usuario } from '../../models/usuario';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -19,7 +20,7 @@ import { Usuario } from '../../models/usuario';
   selector: 'app-home',
   standalone: true,
   imports: [RouterOutlet, MatCardModule, MatCheckboxModule, MatMenuModule, TareaComponent, CommonModule, ModalComponent,DragDropModule,SidebarComponent],
-  providers:[TareaService],
+  providers:[TareaService,HttpClient],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -1,31 +1,30 @@
-import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { HttpEvent, HttpHandler, HttpRequest, HttpInterceptorFn } from "@angular/common/http";
+import { inject } from "@angular/core";
 import { Observable } from "rxjs";
 import { TokenService } from "../services/token.service";
 
-@Injectable()
 
-
-export class TareaInterceptor implements HttpInterceptor {
+// Definición del interceptor como función
+export const tareaInterceptor: HttpInterceptorFn = (request: HttpRequest<any>, next: (req: HttpRequest<any>) => Observable<HttpEvent<any>>): Observable<HttpEvent<any>> => {
+  const tokenService = inject(TokenService); // Obtener la instancia del TokenService
+  const token = tokenService.getToken();
   
-  constructor(private tokenService:TokenService){}
-
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-      // variable request interceptado que tiene valor request
-    let interceptReq = request;
-
-    // obtengo el token
-    const token = this.tokenService.getToken()
-
-    // si el token es diferente de null
-    if(token != null){
-      // interceptReq es un request con el headers añadido
-      interceptReq = request.clone({headers: request.headers.set('Authorization','Bearer' + token)});
-    }
-
-
-        return next.handle(request)
+  // Confirmar que el token no sea null
+  if (token) {
+    console.log('Interceptor: Añadiendo el token', token);
+    
+    // Clonar la solicitud y añadir el encabezado de autorización
+    const clonedRequest = request.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+    
+    return next(clonedRequest);
   }
-
-}
-
+  
+  console.log('Interceptor: No se añadió el token');
+  
+  // Si no hay token, pasar la solicitud original sin modificar
+  return next(request);
+};

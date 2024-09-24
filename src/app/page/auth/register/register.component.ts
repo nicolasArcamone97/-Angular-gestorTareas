@@ -14,8 +14,8 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class RegisterComponent {
 
-   // validadion de mail con expresion regular
-   emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+  // validadion de mail con expresion regular
+  emailValidation = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   myForm:FormGroup;
 
@@ -26,22 +26,29 @@ export class RegisterComponent {
 
     this.myForm = this.form.group({
       nombre:['',Validators.required],
-      email:['', Validators.required, Validators.pattern(this.emailValidation)],
+      email:['', [Validators.required, Validators.pattern(this.emailValidation)]],
       password:['', [Validators.required, Validators.minLength(6)]]
     })
   }
 
+
+  ngOnInit(){}
 
 
 
   onRegister(){
     if(this.myForm.valid){
       const { nombre, email, password } = this.myForm.value;
-      this.authService.register(new RegisterDTO(nombre, email, password)).subscribe((data) => {
+      this.usuarioRegister = {
+        nombre: nombre,
+        email: email,
+        password: password
+      }
+      this.authService.register(this.usuarioRegister).subscribe((data) => {
       console.log(data, "Register Exitoso");
     });
     } else {
-      console.log("Formulario invalido")
+      console.log("Formulario invalido",this.myForm.errors)
     }
   }
 

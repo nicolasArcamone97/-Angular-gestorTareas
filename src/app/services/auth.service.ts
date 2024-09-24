@@ -19,7 +19,7 @@ export class AuthService {
     return this.httpClient.post<any>(this.authURL + 'login',dto)
   }
 
-  register(dto:RegisterDTO):Observable<any>{
+  register(dto:RegisterDTO):Observable<RegisterDTO>{
     return this.httpClient.post<any>(this.authURL + 'register',dto)
   }
 

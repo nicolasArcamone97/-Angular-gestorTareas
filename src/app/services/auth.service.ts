@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { LoginDTO } from '../models/login.dto';
 import { RegisterDTO } from '../models/register.dto';
 import { enviroment } from '../enviroments/enviroment';
+import { TokenDto } from '../models/token.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,9 @@ export class AuthService {
   }
 
 
+  refresh(dto:TokenDto):Observable<any>{
+    return this.httpClient.post<any>(this.authURL + 'refresh',dto)
+  }
 
 
 }

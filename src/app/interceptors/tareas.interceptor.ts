@@ -11,42 +11,45 @@ export const authInterceptor: HttpInterceptorFn = (request: HttpRequest<any>, ne
   const tokenRefresh = inject(AuthService)
   const access_token = tokenService.getToken();
   
-
-
-
-  // Clonar la solicitud y añadir el encabezado de autorización
   const authRequest = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${access_token}`
-      }
-    });
-    
+    setHeaders: {
+      Authorization: `Bearer  ${access_token}`
+    }
+  })
   
-  
+
   return next(authRequest).pipe(
     catchError((err) => {
       return tokenRefresh.refreshToken().pipe(
         switchMap((res) => {
-          // guardar el nuevo token obtenedo por el back
-          tokenService.setToken(res.access_token)
-
-          // creamos nuevo clon de cabezera
+          // guardar el nuevo token obtenedo por el backend
+          tokenService.setToken(res.access_token);
+  
+          // creamos un nuevo clon del request con la nueva cabecera
           const newReq = request.clone({
             setHeaders: {
               Authorization: `Bearer ${res.access_token}`
             }
-          })
-          return next(newReq)
+          });
+  
+          // retornamos la nueva solicitud
+          return next(newReq);
         }),
         catchError((refreshError) => {
-          const finalError = new Error(refreshError)
-
-          // si hay error removemos los tokens
-          tokenService.logOut()
-
-          return throwError(() => finalError)
+          const finalError = new Error(refreshError);
+  
+          // si hay error, removemos los tokens y hacemos logout
+          tokenService.logOut();
+  
+          return throwError(() => finalError);
         })
-      )
+      );
     })
   );
 };
+
+
+
+
+
+

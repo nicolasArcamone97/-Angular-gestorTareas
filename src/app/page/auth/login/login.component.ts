@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { LoginDTO } from '../../../models/login.dto';
 import { AuthService } from '../../../services/auth.service';
@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   // validadion de mail con expresion regular
   emailValidation = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -38,23 +38,32 @@ export class LoginComponent {
     })
   }
 
-  ngOninit(){
-    
+  ngOnInit(): void {
+    // Ciclo de vida correcto
   }
+
   onLogin(): void {
     if (this.myForm.valid) {
       const { email, password } = this.myForm.value; // Obtener los valores del formulario
-      this.usuario = new LoginDTO(email, password); 
+      this.usuario = new LoginDTO(email, password); // crear el dto del login
+
+      // llamada al servicio de autencicacion
       this.authService.login(this.usuario).subscribe(
         (response) => {
           console.log('Login exitoso:', response);
-          if(!response.token){
-            console.log("No hay token")
+
+          // verificar si el response tiene los tokens
+          if(response.access_token && response.refresh_token){
+            //guardar los tokens
+            this.tokenService.setToken(response.access_token)
+            this.tokenService.setRefreshToken(response.refresh_token)
+
+            // redirigir a la pagina de inicio
+            this.router.navigate(['home'])
+          }else {
+            console.log("No se recibieron los tokens necesarios")
           }
-          this.tokenService.setToken(response.token)
-          this.router.navigate(['home'])
-          
-        },
+        } ,
       );
     } else {
       console.error('Formulario inválido');

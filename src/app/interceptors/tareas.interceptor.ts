@@ -1,30 +1,52 @@
 import { HttpEvent, HttpHandler, HttpRequest, HttpInterceptorFn } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { Observable } from "rxjs";
+import { catchError, Observable, switchMap, throwError } from "rxjs";
 import { TokenService } from "../services/token.service";
+import { AuthService } from "../services/auth.service";
 
 
 // Definición del interceptor como función
-export const tareaInterceptor: HttpInterceptorFn = (request: HttpRequest<any>, next: (req: HttpRequest<any>) => Observable<HttpEvent<any>>): Observable<HttpEvent<any>> => {
+export const authInterceptor: HttpInterceptorFn = (request: HttpRequest<any>, next: (req: HttpRequest<any>) => Observable<HttpEvent<any>>): Observable<HttpEvent<any>> => {
   const tokenService = inject(TokenService); // Obtener la instancia del TokenService
-  const token = tokenService.getToken();
+  const tokenRefresh = inject(AuthService)
+  const access_token = tokenService.getToken();
   
-  // Confirmar que el token no sea null
-  if (token) {
-    console.log('Interceptor: Añadiendo el token', token);
-    
-    // Clonar la solicitud y añadir el encabezado de autorización
-    const clonedRequest = request.clone({
+
+
+
+  // Clonar la solicitud y añadir el encabezado de autorización
+  const authRequest = request.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${access_token}`
       }
     });
     
-    return next(clonedRequest);
-  }
   
-  console.log('Interceptor: No se añadió el token');
   
-  // Si no hay token, pasar la solicitud original sin modificar
-  return next(request);
+  return next(authRequest).pipe(
+    catchError((err) => {
+      return tokenRefresh.refreshToken().pipe(
+        switchMap((res) => {
+          // guardar el nuevo token obtenedo por el back
+          tokenService.setToken(res.access_token)
+
+          // creamos nuevo clon de cabezera
+          const newReq = request.clone({
+            setHeaders: {
+              Authorization: `Bearer ${res.access_token}`
+            }
+          })
+          return next(newReq)
+        }),
+        catchError((refreshError) => {
+          const finalError = new Error(refreshError)
+
+          // si hay error removemos los tokens
+          tokenService.logOut()
+
+          return throwError(() => finalError)
+        })
+      )
+    })
+  );
 };

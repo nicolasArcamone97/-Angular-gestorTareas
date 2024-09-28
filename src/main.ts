@@ -5,7 +5,7 @@ import { provideRouter } from '@angular/router';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { routes } from './app/app.routes';
 import { TokenService } from './app/services/token.service';
-import { tareaInterceptor } from './app/interceptors/tareas.interceptor';
+import { authInterceptor } from './app/interceptors/tareas.interceptor';
 
 
 bootstrapApplication(AppComponent, {
@@ -14,7 +14,7 @@ bootstrapApplication(AppComponent, {
     TokenService,
     provideHttpClient(
       withFetch(),
-      withInterceptors([tareaInterceptor])
+      withInterceptors([authInterceptor])
     ), // Asegúrate de proporcionar HttpClient globalmente
      provideAnimations(), // Proporciona animaciones
   ],

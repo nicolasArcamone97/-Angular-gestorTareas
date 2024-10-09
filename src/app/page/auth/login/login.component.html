@@ -6,6 +6,10 @@
         <img class="card-img-top" src="https://i.pinimg.com/originals/73/4a/97/734a97a4cdf3aa0f953f08cf4a085eb7.jpg" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">Login</h5>
+          <div>
+          
+            
+          </div>
           <form [formGroup]="myForm" (ngSubmit)="onLogin()">
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
@@ -33,8 +37,12 @@
 
             <div class="btn-form">
               <button class="btn btn-primary btn-login" type="submit" [disabled]="myForm.invalid">Iniciar Sesión</button>
-
-
+              
+              <!-- <button class="btn btn-google" type="submit">
+                <img src="https://cdn-icons-png.flaticon.com/256/300/300221.png" alt="Google Logo" class="google-logo">
+                Iniciar Sesión con Google
+              </button> -->
+             
             </div>
 
           </form>
@@ -42,6 +50,10 @@
       </div>
     </div>
   </div>
+  
+
+ 
+
 </div>
 
 

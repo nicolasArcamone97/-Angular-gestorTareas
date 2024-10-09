@@ -57,6 +57,11 @@ h5 {
     padding-top: 15px;
 }
 
+
+.btn-form {
+    margin-top: 1em;
+}
+
 .btn-login {
     margin-top: 1em;
     height: 40px;
@@ -64,9 +69,17 @@ h5 {
 }
 
 .btn-google {
+    margin-top: 1em;
     font-size: 15px;
+    width: 100%;
     color: white !important;
     background-color: #ea4335;
+}
+
+.btn-google img {
+    width: 25px;
+    height: 25px;
+    margin-right: 1em;
 }
 
 .btn-facebook {
@@ -74,6 +87,9 @@ h5 {
     color: white !important;
     background-color: #3b5998;
 }
+
+
+
 
 /* Media query para pantallas pequeñas */
 @media (max-width: 600px) {

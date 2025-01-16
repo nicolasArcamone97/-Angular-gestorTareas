@@ -36,7 +36,7 @@
             <a [routerLink]="['/register']">No estas registrado? Registrate</a>
 
             <div class="btn-form">
-              <button class="btn btn-primary btn-login" type="submit" [disabled]="myForm.invalid">Iniciar Sesión</button>
+              <button class="btn btn-primary btn-login" type="submit" [disabled]="myForm.invalid" [routerLink]='["/home"]'>Iniciar Sesión</button> 
               
               <!-- <button class="btn btn-google" type="submit">
                 <img src="https://cdn-icons-png.flaticon.com/256/300/300221.png" alt="Google Logo" class="google-logo">

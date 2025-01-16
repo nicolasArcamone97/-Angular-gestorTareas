@@ -42,33 +42,33 @@ export class LoginComponent implements OnInit {
     // Ciclo de vida correcto
   }
 
-  onLogin(): void {
-    if (this.myForm.valid) {
-      const { email, password } = this.myForm.value; // Obtener los valores del formulario
-      this.usuario = new LoginDTO(email, password); // crear el dto del login
+  // onLogin(): void {
+  //   if (this.myForm.valid) {
+  //     const { email, password } = this.myForm.value; // Obtener los valores del formulario
+      // this.usuario = new LoginDTO(email, password); // crear el dto del login
 
       // llamada al servicio de autencicacion
-      this.authService.login(this.usuario).subscribe(
-        (response) => {
-          console.log('Login exitoso:', response);
+      // this.authService.login(this.usuario).subscribe(
+      //   (response) => {
+      //     console.log('Login exitoso:', response);
 
           // verificar si el response tiene los tokens
-          if(response.access_token && response.refresh_token){
+          // if(response.access_token && response.refresh_token){
             //guardar los tokens
-            this.tokenService.setToken(response.access_token)
-            this.tokenService.setRefreshToken(response.refresh_token)
+            // this.tokenService.setToken(response.access_token)
+            // this.tokenService.setRefreshToken(response.refresh_token)
 
             // redirigir a la pagina de inicio
-            this.router.navigate(['home'])
-          }else {
-            console.log("No se recibieron los tokens necesarios")
-          }
-        } ,
-      );
-    } else {
-      console.error('Formulario inválido');
-    }
-  }     
+    //         this.router.navigate(['home'])
+    //       }else {
+    //         console.log("No se recibieron los tokens necesarios")
+    //       }
+    //     } ,
+    //   );
+    // } else {
+    //   console.error('Formulario inválido');
+    // }
+   //}  
  
 
 

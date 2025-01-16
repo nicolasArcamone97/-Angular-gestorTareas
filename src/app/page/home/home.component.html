@@ -22,14 +22,24 @@
             <!-- col modal -->
             <div class="col col-agregar-tarea">
                   <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-plus-lg"></i></a>
-                  <app-modal (tareaEnviada)="recibirTarea($event)"></app-modal>
+                  <app-modal ></app-modal>
             </div>
 
             <!-- col tareas -->
-            <div class="col col-lista-tareas example-boundary" *ngIf="listTarea.length != 0"> <!-- Mantenemos example-boundary aquí -->
+            <div class="col col-lista-tareas example-boundary"> <!-- Mantenemos example-boundary aquí -->
               <div class="row row-tareas">
                 <div class="col-xl-4 col-tarea example-box" *ngFor="let tarea of listTarea" cdkDragBoundary=".example-boundary" cdkDrag>
-                  <app-tarea [dataEntrante]="tarea" (tareaEnviada)="recibirTarea($event)"></app-tarea>
+                  <div class="card-big-shadow">
+                    <div class="card card-just-text" data-background="color" [attr.data-color]="tarea.color" data-radius="none">
+                        <div class="content" style="position: relative;">
+                            <h4 class="title"><a href="#">{{tarea.titulo}}</a></h4>
+                            <p class="description">{{tarea.descripcion}}</p>
+                            <!-- <div class="icon-container">
+                                <a href="#" (click)="seleccionarTarea(dataEntrante)"><i class="bi bi-check2"></i></a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
                 </div>
               </div>
             </div>

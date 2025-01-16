@@ -19,14 +19,14 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, MatCardModule, MatCheckboxModule, MatMenuModule, TareaComponent, CommonModule, ModalComponent,DragDropModule,SidebarComponent],
+  imports: [ MatCardModule, MatCheckboxModule, MatMenuModule, TareaComponent, CommonModule, ModalComponent,DragDropModule,SidebarComponent],
   providers:[TareaService,HttpClient],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
 
-  listTarea: Tarea[] = [];
+  listTarea?: Tarea[];
 
   tareaSelected?: Tarea;
 
@@ -38,6 +38,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerTareasUsuario()
+    this.obtenerTareas()
   }
 
 
@@ -47,11 +48,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  recibirTarea(tarea:Tarea){
-    this._tareaService.nuevaTarea(tarea).subscribe((data) => {
-      this.obtenerTareasUsuario()
-      console.log(data)
-    })
+  // recibirTarea(tarea:Tarea){
+  //   this._tareaService.nuevaTarea(tarea).subscribe((data) => {
+  //     this.obtenerTareasUsuario()
+  //     console.log(data)
+  //   })
+  // }
+
+  obtenerTareas(){
+    this.listTarea = this._tareaService.obtenerTareas()
   }
 
   
